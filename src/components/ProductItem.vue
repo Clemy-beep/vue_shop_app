@@ -4,10 +4,15 @@
     <p class="brand">{{ article.brand }}</p>
     <p class="description">{{ article.description }}</p>
     <p class="price">{{ article.price }} {{ article.currency }}</p>
-    <button class="btn" @click="$emit('addToCart')">
-      <span class="material-icons add-to-cart"> add_shopping_cart </span> Add to
-      cart
-    </button>
+    <div class="btns">
+      <button class="btn" @click="$emit('addToCart')">
+        <span class="material-icons add-to-cart"> add_shopping_cart </span> Add
+        to cart
+      </button>
+      <button class="btn rmv" @click="$emit('removeFromCart')">
+        <span class="material-icons add-to-cart"> delete </span>Remove
+      </button>
+    </div>
   </div>
 </template>
 
@@ -56,6 +61,12 @@ export default defineComponent({
   font-weight: bold;
 }
 
+.btns {
+  display: flex;
+  gap: 0.5em;
+  justify-content: center;
+}
+
 .btn {
   border: 2px solid #41cc81;
   background-color: transparent;
@@ -68,5 +79,10 @@ export default defineComponent({
 
 .add-to-cart {
   vertical-align: middle;
+}
+
+.rmv {
+  color: #ee2020;
+  border-color: #ee2020;
 }
 </style>

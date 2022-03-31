@@ -5,6 +5,7 @@
       v-for="product in products?.articles"
       :key="product.id"
       @add-to-cart="addToCart(product)"
+      @remove-from-cart="removeFromCart(product)"
     ></ProductItem>
   </div>
 </template>
@@ -23,7 +24,6 @@ export default defineComponent({
   data() {
     return {
       products: products,
-      cart: [],
     };
   },
   computed: {
@@ -33,9 +33,11 @@ export default defineComponent({
   },
   methods: {
     addToCart: function (product) {
-      this.cart.push(product);
-      this.setCart = this.cart;
+      this.setCart.push(product);
       alert("Product added");
+    },
+    removeFromCart: function (product) {
+      this.setCart.filter((e) => e.id !== product.id);
     },
   },
 });
