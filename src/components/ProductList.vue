@@ -37,7 +37,8 @@ export default defineComponent({
       alert("Product added");
     },
     removeFromCart: function (product) {
-      this.setCart.filter((e) => e.id !== product.id);
+      var index = this.setCart.findIndex((object) => object.id == product.id);
+      this.setCart.splice(index, 1);
     },
   },
 });
