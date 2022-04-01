@@ -24,6 +24,7 @@ export default defineComponent({
   data() {
     return {
       products: products,
+      quantity: 1,
     };
   },
   computed: {
@@ -33,7 +34,15 @@ export default defineComponent({
   },
   methods: {
     addToCart: function (product) {
-      this.setCart.push(product);
+      Object.assign(product, { quantity: this.quantity });
+
+      // eslint-disable-next-line no-prototype-builtins
+      if (this.setCart.hasOwnProperty(product.id)) {
+        console.log("eee");
+        product.quantity += 1;
+      } else {
+        this.setCart.push(product);
+      }
       alert("Product added");
     },
     removeFromCart: function (product) {
